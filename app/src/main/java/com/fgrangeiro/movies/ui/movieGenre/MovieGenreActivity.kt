@@ -1,6 +1,5 @@
 package com.fgrangeiro.movies.ui.movieGenre
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,16 +8,14 @@ import com.fgrangeiro.movies.ui.base.BaseActivity
 import com.fgrangeiro.movies.ui.extensions.hide
 import com.fgrangeiro.movies.ui.extensions.show
 import com.fgrangeiro.movies.ui.movieGenre.adapter.MovieGenreAdapter
-import com.fgrangeiro.movies.ui.movieGenre.adapter.MovieGenreAdapterInterface
-import com.fgrangeiro.movies.ui.moviesList.MoviesListActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_movies_genre.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MovieGenreActivity : BaseActivity(), MovieGenreAdapterInterface {
+class MovieGenreActivity : BaseActivity() {
     override val viewModel: MovieGenreViewModel by viewModel()
 
-    private val movieGenreAdapter = MovieGenreAdapter(this)
+    private val movieGenreAdapter = MovieGenreAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,11 +49,6 @@ class MovieGenreActivity : BaseActivity(), MovieGenreAdapterInterface {
             showErrorMessage()
             hideLoading()
         })
-    }
-
-    override fun onClick(id: Int) {
-        val intent = Intent(this, MoviesListActivity::class.java)
-        startActivity(intent)
     }
 
     private fun hideLoading() {

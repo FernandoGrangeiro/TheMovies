@@ -34,7 +34,7 @@ abstract class BaseActivity : AppCompatActivity() {
                 setDisplayHomeAsUpEnabled(setDisplayHomeAsUpEnabled)
                 title = ""
             }
-            toolbarTitle.text = toolbarTitleString.toLowerCase()
+            toolbarTitle.text = toolbarTitleString
         }
     }
 

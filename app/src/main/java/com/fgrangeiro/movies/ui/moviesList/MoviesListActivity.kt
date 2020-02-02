@@ -9,6 +9,7 @@ import com.fgrangeiro.movies.ui.base.BaseActivity
 import com.fgrangeiro.movies.ui.extensions.hide
 import com.fgrangeiro.movies.ui.extensions.show
 import com.fgrangeiro.movies.ui.movieDetail.MovieDetailActivity
+import com.fgrangeiro.movies.ui.movieGenre.MovieGenreActivity
 import com.fgrangeiro.movies.ui.moviesList.adapter.MovieListAdapter
 import com.fgrangeiro.movies.ui.moviesList.adapter.MovieListInterface
 import com.google.android.material.snackbar.Snackbar
@@ -28,7 +29,14 @@ class MoviesListActivity : BaseActivity(), MovieListInterface {
         setViewModelListeners()
         getMovieList()
         setUpToolbar()
+        setViewListeners()
+    }
 
+    private fun setViewListeners() {
+        genreButton.setOnClickListener {
+            val intent = Intent(this, MovieGenreActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setUpToolbar() {

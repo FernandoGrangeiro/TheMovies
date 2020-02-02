@@ -8,7 +8,7 @@ import com.fgrangeiro.movies.R
 import com.fgrangeiro.movies.entities.movieGenre.MovieGenre
 import kotlinx.android.synthetic.main.item_movie_genre.view.*
 
-class MovieGenreAdapter(val movieGenreAdapterInterface: MovieGenreAdapterInterface) :
+class MovieGenreAdapter :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val movieGenreList: MutableList<MovieGenre> = mutableListOf()
@@ -30,9 +30,6 @@ class MovieGenreAdapter(val movieGenreAdapterInterface: MovieGenreAdapterInterfa
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.name.run {
             text = movieGenreList[position].name
-            setOnClickListener {
-                movieGenreAdapterInterface.onClick(movieGenreList[position].id)
-            }
         }
     }
 
