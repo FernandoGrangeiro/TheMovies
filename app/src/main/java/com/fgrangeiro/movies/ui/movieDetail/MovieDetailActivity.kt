@@ -6,6 +6,7 @@ import com.fgrangeiro.movies.R
 import com.fgrangeiro.movies.ui.base.BaseActivity
 import com.fgrangeiro.movies.ui.base.GlideApp
 import com.fgrangeiro.movies.ui.extensions.hide
+import com.fgrangeiro.movies.ui.extensions.removeFirstChar
 import com.fgrangeiro.movies.ui.extensions.show
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_movie_detail.*
@@ -24,7 +25,7 @@ class MovieDetailActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
-        setupToolbar("Detalhe do Filme")
+        setupToolbar(getString(R.string.movie_detail_toolbar))
         setViewModelListeners()
         showLoading()
         getMovieDetail()
@@ -43,12 +44,12 @@ class MovieDetailActivity : BaseActivity() {
             movie?.let {
                 movieName.text = it.title
                 movieDescription.text = it.description
-                movieReleaseDate.text = "Lançado em: ${it.releaseDate}"
+                movieReleaseDate.text =
+                    getString(R.string.movie_detail_release_date, it.releaseDate)
 
                 GlideApp.with(this)
                     .load(
-                        "https://image.tmdb.org/t/p/original/" +
-                                movie.backDropImage.removeRange(IntRange(0, 0))
+                        "https://image.tmdb.org/t/p/original/${movie.backDropImage.removeFirstChar()}"
                     )
                     .into(movieImage)
             }
@@ -70,7 +71,7 @@ class MovieDetailActivity : BaseActivity() {
     private fun showErrorMessage() {
         Snackbar.make(
             loading,
-            "Não foi possível carregar o detalhe do Filme",
+            getString(R.string.movie_detail_request_error),
             Snackbar.LENGTH_SHORT
         ).show()
     }

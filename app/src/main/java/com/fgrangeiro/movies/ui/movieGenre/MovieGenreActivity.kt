@@ -20,7 +20,7 @@ class MovieGenreActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies_genre)
-        setupToolbar("Gêneros")
+        setupToolbar(getString(R.string.movie_genre_toolbar))
         showLoading()
         setViewModelListeners()
         getMoviesGenres()
@@ -62,7 +62,7 @@ class MovieGenreActivity : BaseActivity() {
     private fun showErrorMessage() {
         Snackbar.make(
             loading,
-            "Não foi possível pegar a lista de Gêneros",
+            getString(R.string.movie_genre_request_error),
             Snackbar.LENGTH_SHORT
         ).show()
     }

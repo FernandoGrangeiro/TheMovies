@@ -40,7 +40,7 @@ class MoviesListActivity : BaseActivity(), MovieListInterface {
     }
 
     private fun setUpToolbar() {
-        setupToolbar("Lista de Filmes")
+        setupToolbar(getString(R.string.movie_list_toolbar))
         disableNavigationIcon()
     }
 
@@ -83,7 +83,7 @@ class MoviesListActivity : BaseActivity(), MovieListInterface {
     private fun showErrorMessage() {
         Snackbar.make(
             loading,
-            "Não foi possível pegar a lista de Filmes",
+            getString(R.string.movie_list_request_error),
             Snackbar.LENGTH_SHORT
         ).show()
     }

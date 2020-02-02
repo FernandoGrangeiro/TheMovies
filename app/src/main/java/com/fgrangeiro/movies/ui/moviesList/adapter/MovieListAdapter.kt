@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fgrangeiro.movies.R
 import com.fgrangeiro.movies.entities.movieList.Movie
 import com.fgrangeiro.movies.ui.base.GlideApp
+import com.fgrangeiro.movies.ui.extensions.removeFirstChar
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MovieListAdapter(private val movieListInterface: MovieListInterface) :
@@ -38,12 +39,7 @@ class MovieListAdapter(private val movieListInterface: MovieListInterface) :
 
             GlideApp.with(context)
                 .load(
-                    "https://image.tmdb.org/t/p/original/" + movie.image.removeRange(
-                        IntRange(
-                            0,
-                            0
-                        )
-                    )
+                    "https://image.tmdb.org/t/p/original/${movie.image.removeFirstChar()}"
                 )
                 .into(movieImage)
 
