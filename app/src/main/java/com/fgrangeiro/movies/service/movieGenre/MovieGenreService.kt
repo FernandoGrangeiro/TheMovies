@@ -5,8 +5,7 @@ import io.reactivex.Single
 
 class MovieGenreService(val api: MovieGenreApi) {
 
-
     fun getMovieGenres(): Single<MovieGenreListResponse> {
-        return api.getMeetingExchanges()
+        return api.getMovieGenreList()
     }
 }

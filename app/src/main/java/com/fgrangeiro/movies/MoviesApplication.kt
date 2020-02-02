@@ -2,11 +2,12 @@ package com.fgrangeiro.movies
 
 import android.app.Application
 import com.fgrangeiro.movies.di.movieGenreModule
+import com.fgrangeiro.movies.di.movieListModule
 import org.koin.core.context.startKoin
 
 class MoviesApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        startKoin { modules(movieGenreModule) }
+        startKoin { modules(listOf(movieGenreModule, movieListModule)) }
     }
 }
