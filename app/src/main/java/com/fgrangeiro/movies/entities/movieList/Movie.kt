@@ -7,8 +7,12 @@ data class Movie(
     val id: Int,
     @SerializedName("poster_path")
     val image: String,
+    @SerializedName("backdrop_path")
+    val backDropImage: String,
     @SerializedName("title")
     val title: String,
     @SerializedName("release_date")
-    val releaseDate: String
+    val releaseDate: String,
+    @SerializedName("overview")
+    val description: String
 )

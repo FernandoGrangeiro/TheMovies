@@ -32,7 +32,7 @@ class MovieListAdapter(private val movieListInterface: MovieListInterface) :
         val movie = movieList[position]
         holder.itemView.run {
             movieName.text = movie.title
-            movieName.setOnClickListener {
+            container.setOnClickListener {
                 movieListInterface.onClick(movie.id)
             }
 

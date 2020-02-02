@@ -28,7 +28,6 @@ class MovieGenreActivity : BaseActivity(), MovieGenreAdapterInterface {
         setViewModelListeners()
         getMoviesGenres()
         setupAdapter()
-        disableNavigationIcon()
     }
 
     private fun setupAdapter() {
@@ -37,7 +36,6 @@ class MovieGenreActivity : BaseActivity(), MovieGenreAdapterInterface {
             adapter = movieGenreAdapter
         }
     }
-
 
     private fun getMoviesGenres() {
         viewModel.getMoviesGenres()

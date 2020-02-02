@@ -8,6 +8,7 @@ import com.fgrangeiro.movies.R
 import com.fgrangeiro.movies.ui.base.BaseActivity
 import com.fgrangeiro.movies.ui.extensions.hide
 import com.fgrangeiro.movies.ui.extensions.show
+import com.fgrangeiro.movies.ui.movieDetail.MovieDetailActivity
 import com.fgrangeiro.movies.ui.moviesList.adapter.MovieListAdapter
 import com.fgrangeiro.movies.ui.moviesList.adapter.MovieListInterface
 import com.google.android.material.snackbar.Snackbar
@@ -22,10 +23,17 @@ class MoviesListActivity : BaseActivity(), MovieListInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies_list)
+        showLoading()
         setupAdapter()
         setViewModelListeners()
         getMovieList()
+        setUpToolbar()
 
+    }
+
+    private fun setUpToolbar() {
+        setupToolbar("Lista de Filmes")
+        disableNavigationIcon()
     }
 
     private fun getMovieList() {
@@ -73,7 +81,11 @@ class MoviesListActivity : BaseActivity(), MovieListInterface {
     }
 
     override fun onClick(id: Int) {
-        val intent = Intent(this, MoviesListActivity::class.java)
+        val intent = Intent(this, MovieDetailActivity::class.java)
+            .apply {
+                putExtra(MovieDetailActivity.MOVIE_ID, id)
+            }
+
         startActivity(intent)
     }
 }

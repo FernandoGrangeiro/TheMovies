@@ -1,27 +1,30 @@
-package com.fgrangeiro.movies.ui.moviesList
+package com.fgrangeiro.movies.ui.movieDetail
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.fgrangeiro.movies.entities.movieList.Movie
-import com.fgrangeiro.movies.service.movieList.MovieListService
+import com.fgrangeiro.movies.service.movieDetail.MovieDetailService
 import com.fgrangeiro.movies.ui.base.BaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class MoviesListViewModel(private val service: MovieListService) : BaseViewModel() {
+class MovieDetailViewModel(private val service: MovieDetailService) : BaseViewModel() {
 
-    val movieListLiveData = MutableLiveData<List<Movie>>()
+    val movieDetailLiveData = MutableLiveData<Movie>()
     val errorLiveData = MutableLiveData<Unit>()
 
-    fun getMovieList() {
-        val disposable = service.getMovieList().subscribeOn(Schedulers.io())
+    fun getMovieDetail(id: Int) {
+        val disposable = service.getMovieDetail(id).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { response, error ->
                 response?.let {
-                    movieListLiveData.postValue(it.results)
+                    movieDetailLiveData.postValue(it)
                 }
                 error?.let {
-                    Log.d("Error", it.toString())
+                    Log.d(
+                        "dasdadawdawa", it.localizedMessage
+                    )
+
                     errorLiveData.postValue(Unit)
                 }
             }
