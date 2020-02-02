@@ -1,6 +1,5 @@
 package com.fgrangeiro.movies.ui.movieDetail
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.fgrangeiro.movies.entities.movieList.Movie
 import com.fgrangeiro.movies.service.movieDetail.MovieDetailService
@@ -21,10 +20,6 @@ class MovieDetailViewModel(private val service: MovieDetailService) : BaseViewMo
                     movieDetailLiveData.postValue(it)
                 }
                 error?.let {
-                    Log.d(
-                        "dasdadawdawa", it.localizedMessage
-                    )
-
                     errorLiveData.postValue(Unit)
                 }
             }

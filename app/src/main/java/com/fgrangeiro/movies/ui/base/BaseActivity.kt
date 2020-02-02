@@ -1,6 +1,7 @@
 package com.fgrangeiro.movies.ui.base
 
 import android.content.Context
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
@@ -46,5 +47,15 @@ abstract class BaseActivity : AppCompatActivity() {
     fun disableNavigationIcon() {
         toolbar.navigationIcon = null
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
