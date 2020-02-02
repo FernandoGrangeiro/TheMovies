@@ -17,13 +17,13 @@ class RetrofitGenerator {
         val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
 
-        val a = Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.PROJECT_BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
 
-        return a.create(apiInterface)
+        return retrofit.create(apiInterface)
     }
 }

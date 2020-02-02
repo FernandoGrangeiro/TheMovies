@@ -1,3 +1,8 @@
 package com.fgrangeiro.movies.entities.movieGenre
 
-data class MovieGenreListResponse(val genres: List<MovieGenre>)
+import com.google.gson.annotations.SerializedName
+
+data class MovieGenreListResponse(
+    @SerializedName("genres")
+    val genres: List<MovieGenre>
+)
